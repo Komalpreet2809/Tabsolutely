@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab</title>
+  
+  <!-- Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons: Material Symbols Rounded -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Lottie JSON Player -->
+  <script src="lottie-player.js"></script>
+</head>
+<body>
+  <!-- Background Image Overlay -->
+  <div class="bg-overlay"></div>
+
+  <div class="dashboard">
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      
+      <!-- HEADER -->
+      <header class="header">
+        <div class="header-left-column">
+          <div class="greeting-section">
+            <h1 class="greeting">
+              <span id="greeting-text">Good morning,</span> 
+              <span id="lottie-container"></span>
+            </h1>
+          </div>
+        </div>
+        <div class="header-right-column" style="display: flex; align-items: center;">
+          <button id="theme-toggle" class="btn icon-only glass-panel" style="width: 48px; height: 48px; border-radius: 50%; color: var(--text-primary); transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; border: 1px solid var(--glass-border); cursor: pointer;" title="Toggle Dark Mode">
+            <span class="material-symbols-rounded" id="theme-icon">dark_mode</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- WIDGETS LAYOUT -->
+      <div class="dashboard-content">
+        
+        <!-- LEFT COLUMN (Quick Access + 12-col Grid) -->
+        <div class="left-column">
+          
+          <!-- SEARCH BAR -->
+          <div class="search-wrapper">
+            <div class="search-container glass-panel">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" style="height: 24px; margin-right: 8px;">
+              <input type="text" class="search-input" placeholder="Search Google or type a URL" id="search-input">
+              <span class="material-symbols-rounded mic-icon">mic</span>
+            </div>
+          </div>
+          
+          <!-- Quick Access -->
+          <section class="widget-section quick-access-section">
+            <div class="section-header">
+              <h3>Quick Access</h3>
+            </div>
+            <div class="quick-access-grid" id="quick-access-grid">
+              <!-- Links rendered dynamically by script.js -->
+            </div>
+          </section>
+          <!-- Quick Notes -->
+          <div class="widget glass-panel notes-widget">
+            <div class="widget-header">
+              <h3>Quick Notes</h3>
+              <div style="display: flex; gap: 4px;">
+                <button class="icon-btn-small" id="copy-note-btn" title="Copy to Clipboard"><span class="material-symbols-rounded" style="font-size: 18px;">content_copy</span></button>
+                <button class="icon-btn-small" id="clear-note-btn" title="Clear Notes"><span class="material-symbols-rounded" style="font-size: 18px;">delete</span></button>
+              </div>
+            </div>
+            <textarea id="simple-notepad" style="flex: 1; width: 100%; resize: none; background: transparent; border: none; outline: none; font-family: inherit; font-size: 0.95rem; color: inherit; padding: 8px 4px; margin-top: 8px;" placeholder="Start typing..."></textarea>
+          </div>
+
+        </div> <!-- End left-column -->
+
+        <!-- MIDDLE COLUMN (Focus) -->
+        <div class="middle-column">
+          <!-- Focus for Today -->
+          <div class="widget glass-panel focus-widget">
+            <div class="widget-header">
+              <h3>Focus for Today</h3>
+              <button class="icon-btn-small" id="add-todo-btn" title="Add Task"><span class="material-symbols-rounded">add</span></button>
+            </div>
+            <div id="todo-input-container" style="display: none; margin-bottom: 12px;">
+              <div class="todo-item" style="cursor: default;">
+                <span class="material-symbols-rounded drag-handle" style="cursor: default; opacity: 0.3; font-size: 20px;">drag_indicator</span>
+                <div style="display:flex; align-items:center; gap:12px; flex:1;">
+                  <span class="checkmark material-symbols-rounded"></span>
+                  <input type="text" id="new-todo-input" style="width: 100%; border: none; border-bottom: 1px solid var(--glass-border); padding-bottom: 4px; font-size: 0.9rem; background: transparent; color: inherit; outline: none;" placeholder="List item">
+                </div>
+                <button class="icon-btn-small" id="close-todo-input-btn" style="margin-left:auto;"><span class="material-symbols-rounded" style="font-size: 16px;">close</span></button>
+              </div>
+            </div>
+            <div class="todo-list" id="todo-list">
+              <!-- Todos will be injected here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN (Pomodoro & Notes) -->
+        <div class="right-column">
+          
+          <!-- Pomodoro -->
+          <div class="widget glass-panel pomodoro-widget">
+            <div class="widget-header">
+              <h3>Timer</h3>
+            </div>
+            
+            <!-- Set Time View (Default) -->
+            <div class="pomodoro-content" id="pomodoro-set-view" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem 0;">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 3rem;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <div style="display: flex; flex-direction: column; align-items: center;">
+                    <input type="number" id="pomodoro-input-hr" class="search-input" style="width: 60px; text-align: center; font-size: 2rem; padding: 4px; border: none; border-bottom: 2px solid var(--glass-border); background: transparent; color: inherit; outline: none;" value="" placeholder="00" min="0" max="24">
+                    <span style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">hours</span>
+                  </div>
+                  <span style="font-size: 2rem; font-weight: bold; margin-bottom: 24px;">:</span>
+                  <div style="display: flex; flex-direction: column; align-items: center;">
+                    <input type="number" id="pomodoro-input-min" class="search-input" style="width: 60px; text-align: center; font-size: 2rem; padding: 4px; border: none; border-bottom: 2px solid var(--glass-border); background: transparent; color: inherit; outline: none;" value="" placeholder="00" min="0" max="59">
+                    <span style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">min</span>
+                  </div>
+                  <span style="font-size: 2rem; font-weight: bold; margin-bottom: 24px;">:</span>
+                  <div style="display: flex; flex-direction: column; align-items: center;">
+                    <input type="number" id="pomodoro-input-sec" class="search-input" style="width: 60px; text-align: center; font-size: 2rem; padding: 4px; border: none; border-bottom: 2px solid var(--glass-border); background: transparent; color: inherit; outline: none;" value="" placeholder="00" min="0" max="59">
+                    <span style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">sec</span>
+                  </div>
+                </div>
+                <button class="btn primary" id="pomodoro-start-btn" style="width: 140px; font-size: 1.1rem; border-radius: 24px; padding: 12px;">Start</button>
+              </div>
+            </div>
+
+            <!-- Timer View -->
+            <div class="pomodoro-content" id="pomodoro-timer-view" style="display: none; align-items: center; justify-content: center;">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%;">
+                <div class="timer-circle">
+                  <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" class="bg-circle"></circle>
+                    <circle cx="50" cy="50" r="45" class="progress-circle"></circle>
+                  </svg>
+                  <div class="timer-display">
+                    <span class="time" id="pomodoro-time">25:00</span>
+                    <span class="label">Remaining</span>
+                  </div>
+                </div>
+                <div class="pomodoro-controls" style="margin-top: 0px; gap: 20px;">
+                  <button class="btn icon-only" id="pomodoro-cancel-btn" style="width: 48px; height: 48px; border-radius: 50%;" title="Cancel"><span class="material-symbols-rounded" style="font-size: 20px;">close</span></button>
+                  <button class="btn icon-only" id="pomodoro-pause-btn" style="width: 48px; height: 48px; border-radius: 50%;" title="Pause"><span class="material-symbols-rounded" style="font-size: 20px;">pause</span></button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Aesthetic Image Widget -->
+          <div class="widget glass-panel image-widget" style="flex: 1; padding: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;" id="aesthetic-image-container">
+            <img id="aesthetic-image" src="https://picsum.photos/seed/tab1/400/300" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: opacity 0.5s ease;" alt="Aesthetic Image">
+          </div>
+          
+        </div> <!-- End right-column -->
+
+      </div> <!-- End dashboard-content -->
+    </main>
+  </div>
+  
+  <script src="script.js"></script>
+  <div id="custom-alert-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; border-radius: 16px; text-align: center; gap: 1.5rem; max-width: 300px;">
+      <span class="material-symbols-rounded" style="font-size: 48px; color: var(--primary-accent);">alarm_on</span>
+      <h2 style="margin: 0; font-size: 1.5rem;">Timer Finished!</h2>
+      <p style="margin: 0; color: var(--text-secondary);">Your focus session is complete.</p>
+      <button class="btn primary" id="close-alert-btn" style="width: 100%; border-radius: 24px; padding: 10px; font-size: 1.1rem;">OK</button>
+    </div>
+  </div>
+  <div id="quick-access-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content glass-panel" style="display: flex; flex-direction: column; padding: 2rem; border-radius: 16px; gap: 1.5rem; width: 100%; max-width: 360px;">
+      <h2 style="margin: 0; font-size: 1.5rem; text-align: center;">Add Quick Link</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <input type="text" id="qa-url-input" class="search-input" style="width: 100%; border: none; border-bottom: 2px solid var(--glass-border); padding: 8px 4px; font-size: 1rem; background: transparent; color: inherit; outline: none;" placeholder="Website URL">
+        <input type="text" id="qa-name-input" class="search-input" style="width: 100%; border: none; border-bottom: 2px solid var(--glass-border); padding: 8px 4px; font-size: 1rem; background: transparent; color: inherit; outline: none;" placeholder="Website Name">
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <button class="btn" id="qa-cancel-btn" style="flex: 1; border-radius: 24px; padding: 10px; background: rgba(255,255,255,0.1); color: inherit;">Cancel</button>
+        <button class="btn primary" id="qa-save-btn" style="flex: 1; border-radius: 24px; padding: 10px;">Save</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

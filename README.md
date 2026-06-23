@@ -1,37 +1,55 @@
 <div align="center">
-  <h1>Tabsolutely</h1>
-  <p><em>Your New Tab, beautifully reimagined.</em></p>
+  <h1>T A B S O L U T E L Y</h1>
+  <p><em>Where productivity meets absolute clarity.</em></p>
+  <br>
 </div>
 
-<br />
+**Tabsolutely** reclaims your browser's new tab page. It replaces the default clutter with a highly intentional, glassmorphic dashboard designed to pull you into a state of deep focus the moment you open a new window.
 
-**Tabsolutely** is a highly aesthetic, glassmorphic Chrome Extension that replaces the boring default New Tab page with a sleek, customizable productivity dashboard. Built with a focus on design and flow, it brings everything you need into one stunning view without feeling cluttered.
+No bloat. No distractions. Just the tools you need, wrapped in an elegant, breathing interface.
 
-## Features
+<br>
 
-* **Stunning Glassmorphic UI**: Beautiful blurred backgrounds and frosted glass panels that look incredible in both Light and Dark mode.
-* **Built-in Pomodoro Timer**: Stay focused with a dedicated productivity timer featuring a visual progress ring, an audible completion chime, and OS-level notifications so you never miss a break.
-* **"Focus for Today" Task List**: A slick, drag-and-drop to-do list that automatically archives your ticked-off tasks into an accordion menu.
-* **Quick Notes Scratchpad**: A simple, persistent text area for jotting down passing thoughts, complete with a one-click "Copy to Clipboard" button.
-* **Quick Access Grid**: Keep your most-used websites just a click away with drag-and-drop reorderable quick links.
-* **Dynamic Wallpapers**: A curated widget that gently cycles through highly aesthetic photography every minute (or immediately upon click) to keep your dashboard feeling fresh.
-* **Seamless Search**: A clean, centralized search bar that hooks directly into Google.
+### The Architecture of Focus
 
-## Installation (Developer Mode)
+**Stunning Glassmorphic UI**
+Built entirely on modern CSS principles, the interface features dynamic blurred backgrounds and frosted glass panels that adapt flawlessly to both Light and Dark modes.
 
-If you want to run Tabsolutely locally before it hits the Chrome Web Store:
+**Deep Work Pomodoro Timer**
+A dedicated productivity timer anchored to the right column. It features a visual progress ring, an audible completion chime, and OS-level notifications to ensure you never miss a break—even when working across multiple windows.
+
+**Fluid "Focus for Today" Task List**
+A frictionless, drag-and-drop to-do list. Completed tasks automatically archive themselves into a sleek accordion menu, keeping your active view ruthlessly clean.
+
+**Quick Notes Scratchpad**
+A persistent, auto-saving text area designed to capture passing thoughts before they break your concentration. Includes a one-click clipboard copy.
+
+**Tactile Quick Access Grid**
+Your most essential tools, one click away. Easily reorderable via drag-and-drop to match your workflow.
+
+**Curated Dynamic Wallpapers**
+A quiet widget that cycles through premium, atmospheric photography. It changes naturally every minute, or instantly upon click, keeping the environment feeling alive but never distracting.
+
+<br>
+
+### Installation (Developer Mode)
+
+To run the local build before official web store distribution:
 
 1. Clone or download this repository.
-2. Open Google Chrome and navigate to `chrome://extensions/`.
-3. Toggle on **Developer mode** in the top right corner.
-4. Click **Load unpacked** in the top left.
-5. Select the `Tabsolutely` folder.
-6. Open a New Tab and enjoy.
+2. Navigate to `chrome://extensions/` in your browser.
+3. Enable **Developer mode** in the top right corner.
+4. Click **Load unpacked** and select the `Tabsolutely` directory.
+5. Open a new tab and experience the interface.
 
-## What's Next?
-* Cloud Sync for tasks and notes across devices
-* Real-time Weather Widget integration
-* Custom user-uploaded wallpaper support
+<br>
 
----
-*Built to make every new tab feel a little more special.*
+### Roadmap
+
+- **Cloud Sync:** Seamless persistence for tasks and notes across devices.
+- **Ambient Weather:** Real-time environmental data integration.
+- **Custom Backgrounds:** Support for user-uploaded photography.
+
+<hr>
+
+*Designed to make every new tab a breath of fresh air.*

@@ -1,8 +1,17 @@
 <div align="center">
+  <img src="assets/banner.png" alt="Tabsolutely Banner" width="100%" style="border-radius: 12px;" />
+  <br><br>
   <h1>T A B S O L U T E L Y</h1>
   <p><em>Where productivity meets absolute clarity.</em></p>
-  <br>
+  
+  <p>
+    <img src="https://img.shields.io/badge/Design-Glassmorphism-0ea5e9?style=for-the-badge" alt="Design Badge" />
+    <img src="https://img.shields.io/badge/Mode-Dark%20%26%20Light-6366f1?style=for-the-badge" alt="Mode Badge" />
+    <img src="https://img.shields.io/badge/Productivity-Pomodoro-ec4899?style=for-the-badge" alt="Productivity Badge" />
+  </p>
 </div>
+
+<br />
 
 **Tabsolutely** reclaims your browser's new tab page. It replaces the default clutter with a highly intentional, glassmorphic dashboard designed to pull you into a state of deep focus the moment you open a new window.
 
@@ -12,22 +21,22 @@ No bloat. No distractions. Just the tools you need, wrapped in an elegant, breat
 
 ### The Architecture of Focus
 
-**Stunning Glassmorphic UI**
+**Stunning Glassmorphic UI**  
 Built entirely on modern CSS principles, the interface features dynamic blurred backgrounds and frosted glass panels that adapt flawlessly to both Light and Dark modes.
 
-**Deep Work Pomodoro Timer**
+**Deep Work Pomodoro Timer**  
 A dedicated productivity timer anchored to the right column. It features a visual progress ring, an audible completion chime, and OS-level notifications to ensure you never miss a break—even when working across multiple windows.
 
-**Fluid "Focus for Today" Task List**
+**Fluid "Focus for Today" Task List**  
 A frictionless, drag-and-drop to-do list. Completed tasks automatically archive themselves into a sleek accordion menu, keeping your active view ruthlessly clean.
 
-**Quick Notes Scratchpad**
+**Quick Notes Scratchpad**  
 A persistent, auto-saving text area designed to capture passing thoughts before they break your concentration. Includes a one-click clipboard copy.
 
-**Tactile Quick Access Grid**
+**Tactile Quick Access Grid**  
 Your most essential tools, one click away. Easily reorderable via drag-and-drop to match your workflow.
 
-**Curated Dynamic Wallpapers**
+**Curated Dynamic Wallpapers**  
 A quiet widget that cycles through premium, atmospheric photography. It changes naturally every minute, or instantly upon click, keeping the environment feeling alive but never distracting.
 
 <br>

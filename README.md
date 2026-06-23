@@ -1,6 +1,4 @@
 <div align="center">
-  <img src="assets/banner.png" alt="Tabsolutely Banner" width="100%" style="border-radius: 12px;" />
-  <br><br>
   <h1>T A B S O L U T E L Y</h1>
   <p><em>Where productivity meets absolute clarity.</em></p>
   

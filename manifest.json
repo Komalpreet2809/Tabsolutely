@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Tabsolutely Dashboard",
+  "name": "Tabsolutely",
   "version": "1.0",
   "description": "A highly aesthetic, glassmorphic dashboard organizer for your New Tab.",
   "chrome_url_overrides": {

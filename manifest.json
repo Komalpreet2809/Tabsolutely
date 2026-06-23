@@ -11,7 +11,8 @@
     "history",
     "storage",
     "identity",
-    "identity.email"
+    "identity.email",
+    "notifications"
   ],
   "host_permissions": [
     "https://get.geojs.io/*",

@@ -65,6 +65,16 @@
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
 html {
   font-size: 14.5px; /* Scales down all rem-based sizes (padding, font sizes, gaps) */
 }
@@ -959,16 +969,31 @@ body {
 }
 
 /* Responsive adjustments */
+@media (max-width: 1400px) {
+  .dashboard-content {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .left-column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-height: min-content;
+  }
+  .middle-column, .right-column {
+    flex: 1 1 45%;
+    max-width: none;
+    min-height: min-content;
+  }
+}
+
 @media (max-width: 900px) {
   .dashboard-content {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
-  .right-column {
+  .middle-column, .right-column {
+    flex: 0 0 100%;
     width: 100%;
-    flex-direction: row;
-  }
-  .right-column > * {
-    flex: 1;
   }
 }
 

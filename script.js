@@ -364,6 +364,30 @@ document.addEventListener('DOMContentLoaded', () => {
           inputMin.value = '';
           inputSec.value = '';
           
+          // Play a pleasant chime sound
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const playNote = (freq, startTime, duration) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, startTime);
+              gain.gain.setValueAtTime(0, startTime);
+              gain.gain.linearRampToValueAtTime(0.5, startTime + 0.05);
+              gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(startTime);
+              osc.stop(startTime + duration);
+            };
+            const now = ctx.currentTime;
+            playNote(523.25, now, 0.5); // C5
+            playNote(659.25, now + 0.15, 0.8); // E5
+            playNote(783.99, now + 0.3, 1.2); // G5
+          } catch (e) {
+            console.error("Audio playback failed", e);
+          }
+
           // Show custom modal instead of alert
           const modal = document.getElementById('custom-alert-modal');
           const closeBtn = document.getElementById('close-alert-btn');
@@ -372,6 +396,21 @@ document.addEventListener('DOMContentLoaded', () => {
             closeBtn.onclick = () => {
               modal.style.display = 'none';
             };
+          }
+          
+          // Send system notification
+          if (chrome && chrome.notifications) {
+            chrome.notifications.create({
+              type: 'basic',
+              iconUrl: 'bg.png',
+              title: 'Timer Finished!',
+              message: 'Your Pomodoro session is complete. Time for a break!',
+              requireInteraction: true
+            }, function(notificationId) {
+              if (chrome.runtime.lastError) {
+                console.error("Notification error:", chrome.runtime.lastError);
+              }
+            });
           }
         }
       }, 1000);
@@ -702,10 +741,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (clearNoteBtn) {
         clearNoteBtn.addEventListener('click', () => {
-          if (confirm("Are you sure you want to clear your notes?")) {
-            simpleNotepad.value = '';
-            chrome.storage.local.set({ 'tabsolutely_simple_note': '' });
-          }
+          simpleNotepad.value = '';
+          chrome.storage.local.set({ 'tabsolutely_simple_note': '' });
         });
       }
     });
